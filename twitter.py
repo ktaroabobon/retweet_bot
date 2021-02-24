@@ -9,6 +9,8 @@ auth.set_access_token(setting.access_token, setting.access_key)
 
 api = tweepy.API(auth)
 
+key_words = setting.key_word.split()
+
 
 class CustomStreamListener(StreamListener):
 
@@ -24,4 +26,4 @@ def streaming_retweet():
     custom_stream_listener = CustomStreamListener()
     custom_stream_listener = tweepy.Stream(auth=api.auth, listener=custom_stream_listener)
 
-    custom_stream_listener.filter(track=[setting.key_word])
+    custom_stream_listener.filter(track=key_words)
